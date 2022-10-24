@@ -1,0 +1,48 @@
+{
+    "name": "lukaszaleckas/laravel-mysql-queue",
+    "autoload": {
+        "psr-4": {
+            "LaravelMysqlQueue\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "LaravelMysqlQueue\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "7.4"
+        },
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "authors": [
+        {
+            "name": "lukaszaleckas",
+            "email": "luk.zaleckas@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "ext-json": "*",
+        "laravel/framework": "^8.83|^9.0"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.5",
+        "phpstan/phpstan-mockery": "^1.0",
+        "phpunit/phpunit": "^9.5",
+        "slevomat/coding-standard": "^6.4",
+        "squizlabs/php_codesniffer": "^3.6",
+        "nunomaduro/larastan": "^1.0",
+        "orchestra/testbench": "^6.24"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LaravelMysqlQueue\\MysqlQueueServiceProvider"
+            ]
+        }
+    }
+}
