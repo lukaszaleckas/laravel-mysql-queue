@@ -25,9 +25,13 @@ class LockRepository
     public function acquireLock(string $name): bool
     {
         return $this->getLockResult(
-            DB::select(
-                DB::raw("select GET_LOCK('$name', $this->lockTimeout)")
-            )
+            DB::query()->selectRaw(
+                'GET_LOCK(:name, :timeout)',
+                [
+                    'name'    => $name,
+                    'timeout' => $this->lockTimeout
+                ]
+            )->get()->toArray()
         );
     }
 
@@ -38,9 +42,7 @@ class LockRepository
     public function releaseLock(string $name): bool
     {
         return $this->getLockResult(
-            DB::select(
-                DB::raw("select RELEASE_LOCK('$name')")
-            )
+            DB::query()->selectRaw('RELEASE_LOCK(?)', [$name])->get()->toArray()
         );
     }
 
